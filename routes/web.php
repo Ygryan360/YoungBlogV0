@@ -1,10 +1,44 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
-Route::get('/', function () {
-    return 'Hello World';
-});
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::name('blog.')->group(function () {
+    Route::get('/', [BlogController::class, 'home'])->name('home');
 
+    Route::get('/post/{slug}-{post}', [BlogController::class, 'show'])
+        ->where(['slug' => '[a-z0-9-]+', 'post' => '[0-9]+'])
+        ->name('show');
+
+    Route::get('/category/{name}', action: [BlogController::class, 'category'])
+        ->where('name', '[a-z]+')
+        ->name('category');
+
+    Route::get('/tag/{name}', [BlogController::class, 'tag'])
+        ->where('name', '[a-z]+')
+        ->name('tag');
+
+    Route::get('/contact', [BlogController::class, 'contact'])->name('contact');
+    Route::post('/contact', [BlogController::class, 'storeContact'])->name('storeContact');
+    Route::get('/about', [BlogController::class, 'about'])->name('about');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('posts', PostController::class)->except('show');
+    Route::patch('/posts/{post}/changestatus', [PostController::class, 'changeStatus'])->name('posts.changestatus');
+    Route::resource('categories', CategoryController::class)->except('show');
+    Route::resource('tags', TagController::class)->except('show');
+});
+
+require __DIR__ . '/auth.php';

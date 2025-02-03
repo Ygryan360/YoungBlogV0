@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('title');
             $table->longText('content');
             $table->string('slug')->unique();
+            $table->string('status')->default('draft');
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
