@@ -1,4 +1,6 @@
 @extends('layouts.blog')
+@section('og-description', \Str::limit($post->content, 150))
+@section('url', route('blog.show', [$post->slug, $post->id]))
 @section('title', $post->title)
 @section('content')
     <div class="row justify-content-between pb-4">
