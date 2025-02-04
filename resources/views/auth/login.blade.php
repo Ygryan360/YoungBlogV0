@@ -1,6 +1,11 @@
 @extends('auth.layouts.base')
 @section('title', 'Connexion')
 @section('content')
+    @if (session('new-registered'))
+        <div class="alet alert-success">
+            Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.
+        </div>
+    @endif
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <h1 class="h3 mb-3 fw-normal">Connexion</h1>

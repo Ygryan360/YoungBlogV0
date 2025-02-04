@@ -44,6 +44,6 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-        return redirect(route('login'))->with('status', 'success');
+        return redirect('login')->with('new-registered');
     }
 }

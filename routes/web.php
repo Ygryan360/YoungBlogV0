@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::name('blog.')->group(function () {
     Route::get('/', [BlogController::class, 'home'])->name('home');
+    Route::get('/allposts', [BlogController::class, 'posts'])->name('posts');
 
     Route::get('/post/{slug}-{post}', [BlogController::class, 'show'])
         ->where(['slug' => '[a-z0-9-]+', 'post' => '[0-9]+'])

@@ -7,13 +7,14 @@
             @foreach ($posts as $post)
                 <div class="card post-item bg-transparent border-0 mb-5">
                     <a href="{{ route('blog.show', [$post->slug, $post->id]) }}">
-                        <img class="card-img-top rounded-0" src="{{ $post->cover ?? asset('img/cover.png') }}" alt="">
+                        {{-- $post->cover ?? --}}
+                        <img class="card-img-top rounded-0" src="{{ asset('img/cover.png') }}" alt="">
                     </a>
                     <div class="card-body px-0">
                         <h2 class="card-title">
                             <a class="text-white opacity-75-onHover"
                                 href="{{ route('blog.show', [$post->slug, $post->id]) }}">
-                                {{ $post->title }}
+                                {{ ucfirst($post->title) }}
                             </a>
                         </h2>
                         <ul class="post-meta mt-3">
@@ -26,19 +27,23 @@
                             <li class="d-inline-block">
                                 <span class="fas fa-list-alt text-primary"></span>
                                 <a class="ml-1" href="{{ route('blog.category', $post->category->name) }}">
-                                    {{ $post->category->name }}
+                                    {{ ucfirst($post->category->name) }}
                                 </a>
                             </li>
                         </ul>
                         <p class="card-text my-4">
                             {{ \Str::limit($post->content, 100) }}
                         </p>
-                        <a href="{{ route('blog.show', [$post->slug, $post->id]) }}" class="btn btn-primary">Lire plus
-                            &rarr;</a>
+                        <a href="{{ route('blog.show', [$post->slug, $post->id]) }}" class="btn btn-primary">
+                            Lire &rarr;
+                        </a>
                     </div>
+
                 </div>
             @endforeach
-            {{ $posts->links() }}
+            <div class="mb-5 text-center">
+                <a href="{{ route('blog.posts') }}" class="btn btn-primary">Voir plus</a>
+            </div>
         </div>
         <div class="col-lg-4 col-md-5">
             <div class="widget text-center"><a href="about.html">
