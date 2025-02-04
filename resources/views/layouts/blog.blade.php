@@ -27,7 +27,7 @@
         <x-navigation-links />
         <div class="main-content">
             <x-navigation-mobile />
-            <div class="container pt-4 mt-5">
+            <div class="container pt-4 mt-5 min-vh-100">
                 @yield('content')
             </div>
             <x-footer />

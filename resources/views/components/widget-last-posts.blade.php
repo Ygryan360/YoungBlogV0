@@ -18,7 +18,7 @@
             <h2 class="card-title">
                 <a class="text-white opacity-75-onHover"
                     href="{{ route('blog.show', [$lastPost->slug, $lastPost->id]) }}">
-                    {{ ucfirst($lastPost->title) }}
+                    {{ \Str::limit(ucfirst($lastPost->title), 35) }}
                 </a>
             </h2>
             <ul class="post-meta mt-3 mb-4">

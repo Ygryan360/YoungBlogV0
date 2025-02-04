@@ -12,8 +12,8 @@ class BlogController extends Controller
     {
         return view('blog.home', [
             'posts' => Post::select(['title', 'content', 'slug', 'cover', 'created_at', 'id', 'category_id'])
-                ->where('status', '=', 'published')
                 ->where('created_at', '>=', now()->subWeeks(2))
+                ->where('status', '=', 'published')
                 ->orderBy('views', 'desc')
                 ->take(8)
                 ->get()
@@ -49,6 +49,27 @@ class BlogController extends Controller
 
     public function search(Request $request)
     {
-        return view('blog.search');
+        if ($request->input('search') === null || $request->input('search') === '') {
+            return view('blog.search');
+        }
+        return view('blog.search', [
+            'results' => Post::where('title', 'like', "%{$request->search}%")
+                ->orWhere('content', 'like', "%{$request->search}%")
+                ->where('status', '=', 'published')
+                ->paginate(6)
+                ->appends($request->only('search'))
+        ]);
     }
+
+    public function about()
+    {
+        return view('blog.about');
+    }
+
+    public function contact()
+    {
+        return view('blog.contact');
+    }
+
+
 }
