@@ -9,15 +9,16 @@ use App\Http\Controllers\CategoryController;
 
 Route::name('blog.')->group(function () {
     Route::get('/', [BlogController::class, 'home'])->name('home');
-
     Route::get('/allposts', [BlogController::class, 'posts'])->name('posts');
+    Route::get('/search', [BlogController::class, 'search'])->name('search');
+    Route::get('/contact', [BlogController::class, 'contact'])->name('contact');
+    Route::post('/contact', [BlogController::class, 'storeContact'])->name('storeContact');
+    Route::get('/about', [BlogController::class, 'about'])->name('about');
+    Route::get('/privacy', [BlogController::class, 'privacy'])->name('privacy');
 
     Route::get('/post/{slug}-{post}', [BlogController::class, 'show'])
         ->where(['slug' => '[a-z0-9-]+', 'post' => '[0-9]+'])
         ->name('show');
-
-    Route::get('/search', [BlogController::class, 'search'])->name('search');
-
 
     Route::get('/category/{name}', action: [BlogController::class, 'category'])
         ->where('name', '[a-z0-9]+')
@@ -26,10 +27,6 @@ Route::name('blog.')->group(function () {
     Route::get('/tag/{name}', [BlogController::class, 'tag'])
         ->where('name', '[a-z0-9]+')
         ->name('tag');
-
-    Route::get('/contact', [BlogController::class, 'contact'])->name('contact');
-    Route::post('/contact', [BlogController::class, 'storeContact'])->name('storeContact');
-    Route::get('/about', [BlogController::class, 'about'])->name('about');
 });
 
 Route::get('/dashboard', function () {

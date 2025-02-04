@@ -46,4 +46,9 @@ class BlogController extends Controller
     {
         return view('blog.tag');
     }
+
+    public function search(Request $request)
+    {
+        return view('blog.search');
+    }
 }
