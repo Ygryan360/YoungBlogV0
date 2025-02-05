@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Parsedown;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -70,6 +71,19 @@ class BlogController extends Controller
     {
         return view('blog.contact');
     }
-
+    public function storeContact(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string|min:32',
+        ]);
+        Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => $request->message,
+        ]);
+        return redirect()->route('blog.contact')->with('success', 'Votre message a bien été envoyé');
+    }
 
 }

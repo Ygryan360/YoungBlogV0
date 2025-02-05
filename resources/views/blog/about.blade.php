@@ -7,7 +7,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-9">
-            <img class="img-fluid" src="{{ asset('img/author.png') }}" alt="Rayane Tchabodi">
+            <img class="img-fluid" src="{{ asset('img/cover.png') }}" alt="Rayane Tchabodi">
             <h1 class="text-white add-letter-space my-4">Salut, je suis Rayane Tchabodi, Bloggeur et passionné de tech</h1>
             <p>
                 Je suis étudiant en première année en Sciences Economique et de gestion (FaSEG) à <a target="_blank"
