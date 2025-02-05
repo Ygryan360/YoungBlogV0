@@ -28,6 +28,12 @@
         <div class="main-content">
             <x-navigation-mobile />
             <div class="container pt-4 mt-5 min-vh-100">
+                @if (session('success'))
+                    <h3 class="bg-dark text-white mb-4 p-3 font-italic text-center">
+                        {{ session('success') }}
+                    </h3>
+                @endif
+
                 @yield('content')
             </div>
             <x-footer />

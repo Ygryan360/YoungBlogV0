@@ -15,6 +15,9 @@ Route::name('blog.')->group(function () {
     Route::post('/contact', [BlogController::class, 'storeContact'])->name('storeContact');
     Route::get('/about', [BlogController::class, 'about'])->name('about');
     Route::get('/privacy', [BlogController::class, 'privacy'])->name('privacy');
+    Route::post('/subscribe', [BlogController::class, 'newsletter'])->name('newsletter');
+
+    Route::get('/confirm-subscription', [BlogController::class, 'confirm'])->name('confirm');
 
     Route::get('/post/{slug}-{post}', [BlogController::class, 'show'])
         ->where(['slug' => '[a-z0-9-]+', 'post' => '[0-9]+'])

@@ -74,6 +74,6 @@
             </div>
         </div>
     @elseif (isset($results) && $results->count() == 0)
-        <h2>Aucun résultat trouvé</h2>
+        <h2>Aucun résultat trouvé :- (</h2>
     @endif
 @endsection
