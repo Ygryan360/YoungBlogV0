@@ -2,29 +2,33 @@
 
 namespace App\Mail;
 
-use Illuminate\Mail\Mailable;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-class ConfirmSubscription extends Mailable
+class NewPost extends Mailable
 {
     use Queueable, SerializesModels;
-    public $folower;
+
+    public $post;
+    public $unsubscribeUrl;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($folower)
+
+    public function __construct($post, $unsubscribeUrl)
     {
-        $this->folower = $folower;
+        $this->post = $post;
+        $this->unsubscribeUrl = $unsubscribeUrl;
     }
 
     public function build()
     {
-        $url = route('blog.confirm', ['email' => $this->folower->email, 'id' => $this->folower->id]);
-        return $this->view('emails.confirm_subscription')->with(['url' => $url, 'email' => $this->folower->email]);
+        return $this->view('emails.new_post')->with(['post' => $this->post, 'unsubscribeUrl' => $this->unsubscribeUrl]);
     }
 
     /**
@@ -33,7 +37,7 @@ class ConfirmSubscription extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Confirmation d\'abonnement à la newsletter',
+            subject: 'Nouvel article publié : ' . \Str::limit($this->post->title),
         );
     }
 
@@ -43,7 +47,7 @@ class ConfirmSubscription extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.confirm_subscription',
+            view: 'emails.new_post',
         );
     }
 

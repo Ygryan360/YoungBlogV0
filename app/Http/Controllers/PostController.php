@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use App\Models\Folower;
+use App\Mail\NewPost;
+use Parsedown;
 class PostController extends Controller
 {
     public function index()
@@ -30,8 +33,17 @@ class PostController extends Controller
         $data = $request->validated();
         $data['user_id'] = auth()->id();
         $data['slug'] = \Str::slug($data['title']);
+        $data['status'] = 'published';
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
+        $parsedown = new Parsedown();
+        $parsedown->setMarkupEscaped(true);
+        $post->content = $parsedown->text($post->content);
+        $folowers = Folower::where('verified', true)->get();
+        foreach ($folowers as $subscriber) {
+            $unsubscribeUrl = route('blog.unsubscribe', ['email' => $subscriber->email, 'id' => $subscriber->id]);
+            Mail::to($subscriber->email)->send(new NewPost($post, $unsubscribeUrl));
+        }
         return redirect()->route('posts.index')->with('success', 'Article créé avec succès');
     }
 

@@ -12,7 +12,8 @@
 @foreach ($lastPosts as $lastPost)
     <div class="card post-item bg-transparent border-0 mb-5">
         <a href="{{ route('blog.show', [$lastPost->slug, $lastPost->id]) }}">
-            <img class="card-img-top rounded-0" src="{{ asset('img/cover.png') }}" alt="{{ $lastPost->title }}">
+            <img class="card-img-top rounded-0" src="{{ $lastPost->cover ?? asset('img/cover.png') }}"
+                alt="{{ $lastPost->title }}">
         </a>
         <div class="card-body px-0">
             <h2 class="card-title">

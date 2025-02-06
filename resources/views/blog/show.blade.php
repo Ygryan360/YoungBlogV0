@@ -5,7 +5,7 @@
 @section('content')
     <div class="row justify-content-between pb-4">
         <div class="col-lg-10">
-            {{-- $post->cover ?? --}} <img class="img-fluid" src="{{ asset('img/cover.png') }}" alt="">
+            <img class="img-fluid" src="{{ $post->cover ?? asset('img/cover.png') }}" alt="{{ $post->title }}">
             <h1 class="text-white add-letter-space mt-4">@yield('title')</h1>
             <ul class="post-meta mt-3">
                 <li class="d-inline-block mr-3">

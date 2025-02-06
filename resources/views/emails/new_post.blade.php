@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation d'abonnement</title>
+    <title>Nouvel article publié: {{ $post->title }}</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
         * {
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+            background-color: #1a191e;
         }
 
         h1,
@@ -20,18 +27,19 @@
             margin-bottom: 20px;
         }
 
-        p {
+        p,
+        small {
             font-family: "Montserrat", sans-serif;
             color: #ddd;
             margin: 10px 0;
         }
 
-        body {
-            display: flex;
-            justify-content: center;
-            padding: 30px;
-            text-align: center;
-            background-color: #1a191e;
+        small {
+            font-style: italic;
+        }
+
+        img {
+            width: 100%;
         }
 
         .email-container {
@@ -39,7 +47,7 @@
         }
 
         .content {
-            padding: 20px;
+            padding: 20px 0;
         }
 
         .btn-container {
@@ -60,6 +68,8 @@
         .footer {
             background-color: #1d1c21;
             padding: 30px 10px;
+            text-align: center;
+            margin-top: 20px;
         }
 
         @media all and (max-width: 348px) {
@@ -73,20 +83,21 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <h3>{{ env('APP_NAME') }}</h3>
-            <h1>Confirmation d'abonnement</h1>
+            <h3 style="text-align: center;">{{ config('app.name') }}</h3>
+            <p>Bonjour, Un nouvel article a été publié sur notre blog. Voici un aperçu :</p>
+            <h1>{{ Str::limit($post->title, 50) }}</h1>
         </div>
         <div class="content">
-            <p>Bonjour {{ $email }},</p>
-            <p>Merci de vous être abonné à notre newsletter ! Veuillez confirmer votre abonnement en cliquant sur le
-                bouton ci-dessous :
-            </p>
-
+            <img src="{{ $post->cover ?? asset('img/cover.png') }}" alt="{{ $post->title }}">
+            <p>{{ Str::limit($post->content, 500) }}</p>
             <div class="btn-container">
-                <a href="{{ $url }}" class="btn">Confirmer mon abonnement</a>
+                <a href="{{ route('blog.show', [$post->slug, $post->id]) }}" class="btn">Lire l'article complet</a>
             </div>
-            <p>Si vous n'avez pas demandé cet abonnement, vous pouvez ignorer cet email.</p>
         </div>
+        <small>
+            Si vous ne souhaitez plus recevoir ces notifications, vous pouvez vous <a href="{{ $unsubscribeUrl }}"
+                style="color: #C38B02; text-decoration: underline;">désabonner</a>.
+        </small>
         <div class="footer">
             <p>
                 Merci,<br>

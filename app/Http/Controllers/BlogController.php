@@ -124,6 +124,14 @@ class BlogController extends Controller
         return redirect()->route('blog.home')->with('success', 'Votre abonnement a été confirmé !');
     }
 
+    public function unsubscribe(Request $request)
+    {
+        $folower = Folower::where('email', $request->email)->where('id', $request->id)->firstOrFail();
+        $folower->delete();
+
+        return redirect()->route('blog.home')->with('success', 'Votre abonement à notre newletter a été annulée !');
+    }
+
     public function privacy()
     {
         return view('blog.privacy');

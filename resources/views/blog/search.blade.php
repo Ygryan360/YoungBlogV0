@@ -34,8 +34,8 @@
                 @foreach ($results as $post)
                     <div class="card post-item bg-transparent border-0 mb-5">
                         <a href="{{ route('blog.show', [$post->slug, $post->id]) }}">
-                            {{-- $post->cover ?? --}}
-                            <img class="card-img-top rounded-0" src="{{ asset('img/cover.png') }}" alt="">
+                            <img class="card-img-top rounded-0" src="{{ $post->cover ?? asset('img/cover.png') }}"
+                                alt="{{ $post->title }}">
                         </a>
                         <div class="card-body px-0">
                             <h2 class="card-title">
