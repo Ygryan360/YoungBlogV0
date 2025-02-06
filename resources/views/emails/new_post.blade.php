@@ -89,7 +89,9 @@
         </div>
         <div class="content">
             <img src="{{ $post->cover ?? asset('img/cover.png') }}" alt="{{ $post->title }}">
-            <p>{{ Str::limit($post->content, 500) }}</p>
+            <div>
+                {!! Str::limit($post->content, 500) !!}
+            </div>
             <div class="btn-container">
                 <a href="{{ route('blog.show', [$post->slug, $post->id]) }}" class="btn">Lire l'article complet</a>
             </div>
