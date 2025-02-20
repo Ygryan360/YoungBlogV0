@@ -13,7 +13,7 @@
             padding: 0;
         }
 
-        body {
+        .email {
             display: flex;
             justify-content: center;
             padding: 30px;
@@ -81,30 +81,33 @@
 </head>
 
 <body>
-    <div class="email-container">
-        <div class="header">
-            <h3 style="text-align: center;">{{ config('app.name') }}</h3>
-            <p>Bonjour, Un nouvel article a été publié sur notre blog. Voici un aperçu :</p>
-            <h1>{{ Str::limit($post->title, 50) }}</h1>
-        </div>
-        <div class="content">
-            <img src="{{ $post->cover ?? asset('img/cover.png') }}" alt="{{ $post->title }}">
-            <div>
-                {!! Str::limit($post->content, 500) !!}
+    <div class="email">
+        <div class="email-container">
+            <div class="header">
+                <h3 style="text-align: center;">{{ config('app.name') }}</h3>
+                <p>Bonjour, Un nouvel article a été publié sur notre blog. Voici un aperçu :</p>
+                <h1>{{ Str::limit($post->title, 50) }}</h1>
             </div>
-            <div class="btn-container">
-                <a href="{{ route('blog.show', [$post->slug, $post->id]) }}" class="btn">Lire l'article complet</a>
+            <div class="content">
+                <img src="{{ $post->cover ?? asset('img/cover.png') }}" alt="{{ $post->title }}">
+                <div>
+                    {!! Str::limit($post->content, 500) !!}
+                </div>
+                <div class="btn-container">
+                    <a href="{{ route('blog.show', [$post->slug, $post->id]) }}" class="btn">Lire l'article
+                        complet</a>
+                </div>
             </div>
-        </div>
-        <small>
-            Si vous ne souhaitez plus recevoir ces notifications, vous pouvez vous <a href="{{ $unsubscribeUrl }}"
-                style="color: #C38B02; text-decoration: underline;">désabonner</a>.
-        </small>
-        <div class="footer">
-            <p>
-                Merci,<br>
-                &copy; {{ date('Y') }} - {{ config('app.name') }}
-            </p>
+            <small>
+                Si vous ne souhaitez plus recevoir ces notifications, vous pouvez vous <a href="{{ $unsubscribeUrl }}"
+                    style="color: #C38B02; text-decoration: underline;">désabonner</a>.
+            </small>
+            <div class="footer">
+                <p>
+                    Merci,<br>
+                    &copy; {{ date('Y') }} - {{ config('app.name') }}
+                </p>
+            </div>
         </div>
     </div>
 </body>

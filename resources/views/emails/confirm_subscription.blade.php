@@ -26,7 +26,7 @@
             margin: 10px 0;
         }
 
-        body {
+        .email {
             display: flex;
             justify-content: center;
             padding: 30px;
@@ -71,27 +71,29 @@
 </head>
 
 <body>
-    <div class="email-container">
-        <div class="header">
-            <h3>{{ env('APP_NAME') }}</h3>
-            <h1>Confirmation d'abonnement</h1>
-        </div>
-        <div class="content">
-            <p>Bonjour {{ $email }},</p>
-            <p>Merci de vous être abonné à notre newsletter ! Veuillez confirmer votre abonnement en cliquant sur le
-                bouton ci-dessous :
-            </p>
-
-            <div class="btn-container">
-                <a href="{{ $url }}" class="btn">Confirmer mon abonnement</a>
+    <div class="email">
+        <div class="email-container">
+            <div class="header">
+                <h3>{{ env('APP_NAME') }}</h3>
+                <h1>Confirmation d'abonnement</h1>
             </div>
-            <p>Si vous n'avez pas demandé cet abonnement, vous pouvez ignorer cet email.</p>
-        </div>
-        <div class="footer">
-            <p>
-                Merci,<br>
-                &copy; {{ date('Y') }} - {{ config('app.name') }}
-            </p>
+            <div class="content">
+                <p>Bonjour {{ $email }},</p>
+                <p>Merci de vous être abonné à notre newsletter ! Veuillez confirmer votre abonnement en cliquant sur le
+                    bouton ci-dessous :
+                </p>
+
+                <div class="btn-container">
+                    <a href="{{ $url }}" class="btn">Confirmer mon abonnement</a>
+                </div>
+                <p>Si vous n'avez pas demandé cet abonnement, vous pouvez ignorer cet email.</p>
+            </div>
+            <div class="footer">
+                <p>
+                    Merci,<br>
+                    &copy; {{ date('Y') }} - {{ config('app.name') }}
+                </p>
+            </div>
         </div>
     </div>
 </body>
