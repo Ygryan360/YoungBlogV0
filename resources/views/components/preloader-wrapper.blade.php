@@ -1,3 +1,5 @@
-<div>
-    <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
+<div class="preloader-wrapper loaded">
+    <div class="preloader-inner">
+        <div class="spinner-border text-red"></div>
+    </div>
 </div>

@@ -12,7 +12,7 @@
     <meta property="og:title" content="@yield('title')" />
     <meta property="og:url" content="@yield('url')" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-    <meta property="og:image" content="{{ asset('img/og-image.png') }}" />
+    <meta property="og:image" content="{{ asset('img/cover.png') }}" />
     <meta name="theme-name" content="galaxy" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
