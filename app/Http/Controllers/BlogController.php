@@ -107,7 +107,7 @@ class BlogController extends Controller
             [
                 'email' => ['email', 'required', 'unique:folowers'],
             ],
-            params: [
+            [
                 'email.unique' => 'Vous êtes déjà inscrit à la newsletter !',
                 'email.required' => 'Veuillez entrer une adresse email valide !',
                 'email.email' => 'Veuillez entrer une adresse email valide !',
