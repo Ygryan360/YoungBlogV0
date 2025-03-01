@@ -38,6 +38,9 @@ class BlogController extends Controller
 
     public function show(string $slug, Post $post)
     {
+        if ($post->status !== 'published') {
+            abort(404);
+        }
         $post->update(['views' => $post->views + 1]);
         $parsedown = new Parsedown();
         $parsedown->setMarkupEscaped(true);
