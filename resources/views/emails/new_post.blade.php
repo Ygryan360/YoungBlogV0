@@ -1,3 +1,9 @@
+@php
+    $parsedown = new \Parsedown();
+    $parsedown->setMarkupEscaped(true);
+    $post->content = $parsedown->text($post->content);
+@endphp
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -33,8 +39,6 @@
                                 style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6;">
                                 Nous espérons que vous allez bien ! Aujourd'hui, nous avons le plaisir de partager avec
                                 vous un nouvel article passionnant sur notre blog.
-                                Préparez-vous à découvrir des idées innovantes et des conseils pratiques qui pourraient
-                                changer votre vision des choses.
                             </p>
                             <h3
                                 style="font-family: Arial, sans-serif; font-size: 18px; color: #333333; margin: 20px 0 10px;">

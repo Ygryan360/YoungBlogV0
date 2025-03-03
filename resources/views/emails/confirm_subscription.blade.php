@@ -5,98 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation d'abonnement</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        h1,
-        h3 {
-            font-family: "Barlow", sans-serif;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-family: "Montserrat", sans-serif;
-            color: #ddd;
-            margin: 10px 0;
-        }
-
-        .email {
-            display: flex;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            background-color: #1a191e;
-        }
-
-        .email-container {
-            max-width: 600px;
-            background-color: #1d1c21;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        .btn-container {
-            margin: 30px 0;
-        }
-
-        .btn {
-            text-decoration: none;
-            color: #fff;
-            background-color: #C38B02;
-            padding: 10px 15px;
-            line-height: 1.5;
-            display: inline-block;
-            text-align: center;
-            font-family: "Barlow", sans-serif;
-        }
-
-        .footer {
-            padding: 30px 10px;
-        }
-
-        @media all and (max-width: 348px) {
-            .content {
-                padding: 0px;
-            }
-        }
-    </style>
 </head>
 
-<body>
-    <div class="email">
-        <div class="email-container">
-            <div class="header">
-                <h3>{{ env('APP_NAME') }}</h3>
-                <h1>Confirmation d'abonnement</h1>
-            </div>
-            <div class="content">
-                <p>Bonjour {{ $email }},</p>
-                <p>Merci de vous être abonné à notre newsletter ! Veuillez confirmer votre abonnement en cliquant sur le
-                    bouton ci-dessous :
-                </p>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f4f4;">
+        <tr>
+            <td align="center" style="padding: 20px;">
+                <table cellpadding="0" cellspacing="0" border="0"
+                    style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+                    <!-- En-tête -->
+                    <tr>
+                        <td style="padding: 20px; text-align: center; background-color: #C38B02; color: #ffffff;">
+                            <h1 style="font-family: Arial, sans-serif; font-size: 24px; margin: 0;">
+                                {{ config('app.name') }}</h1>
+                            <p style="font-family: Arial, sans-serif; font-size: 14px; margin: 5px 0;">Votre source
+                                quotidienne d'inspiration</p>
+                        </td>
+                    </tr>
 
-                <div class="btn-container">
-                    <a href="{{ $url }}" class="btn">Confirmer mon abonnement</a>
-                </div>
-                <p>Si vous n'avez pas demandé cet abonnement, vous pouvez ignorer cet email.</p>
-            </div>
-            <div class="footer">
-                <p>
-                    Merci,<br>
-                    &copy; {{ date('Y') }} - {{ config('app.name') }}
-                </p>
-            </div>
-        </div>
-    </div>
+                    <!-- Contenu principal -->
+                    <tr>
+                        <td style="padding: 20px;">
+                            <h2
+                                style="font-family: Arial, sans-serif; font-size: 20px; color: #333333; margin: 0 0 10px;">
+                                Bonjour {{ $email }},</h2>
+                            <p
+                                style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6;">
+                                Merci de vous être abonné à notre newsletter ! Nous sommes ravis de vous compter parmi
+                                nos lecteurs fidèles.
+                            </p>
+                            <p
+                                style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6;">
+                                Pour finaliser votre inscription, veuillez confirmer votre abonnement en cliquant sur le
+                                bouton ci-dessous :
+                            </p>
+                            <div style="text-align: center; margin-top: 20px;">
+                                <a href="{{ $url }}"
+                                    style="display: inline-block; background-color: #C38B02; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-family: Arial, sans-serif; font-size: 14px;">
+                                    Confirmer mon abonnement →
+                                </a>
+                            </div>
+                            <p
+                                style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6; margin-top: 20px;">
+                                Si vous n'avez pas demandé cet abonnement, vous pouvez ignorer cet email. Aucune action
+                                ne sera entreprise de notre part.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Pied de page -->
+                    <tr>
+                        <td style="padding: 20px; text-align: center; background-color: #f9f9f9; color: #555555;">
+                            <p style="font-family: Arial, sans-serif; font-size: 12px; margin: 0;">
+                                Vous recevez cet email car vous avez souscrit à notre newsletter. Si vous souhaitez vous
+                                désabonner, cliquez <a href="#"
+                                    style="color: #C38B02; text-decoration: underline;">ici</a>.
+                            </p>
+                            <p style="font-family: Arial, sans-serif; font-size: 12px; margin: 10px 0 0;">
+                                &copy; {{ date('Y') }} - {{ config('app.name') }}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>
