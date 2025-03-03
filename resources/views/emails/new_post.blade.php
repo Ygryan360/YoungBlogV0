@@ -54,24 +54,6 @@
                         </td>
                     </tr>
 
-                    <!-- Section secondaire -->
-                    <tr>
-                        <td style="padding: 20px; background-color: #f9f9f9;">
-                            <h3
-                                style="font-family: Arial, sans-serif; font-size: 18px; color: #333333; margin: 0 0 10px;">
-                                D'autres articles qui pourraient vous intéresser :</h3>
-                            <ul
-                                style="list-style-type: disc; padding-left: 20px; font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6;">
-                                <li><a href="#" style="color: #C38B02; text-decoration: none;">Comment rester
-                                        productif en télétravail</a></li>
-                                <li><a href="#" style="color: #C38B02; text-decoration: none;">Les tendances
-                                        technologiques de 2023</a></li>
-                                <li><a href="#" style="color: #C38B02; text-decoration: none;">5 astuces pour
-                                        mieux gérer votre temps</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-
                     <!-- Pied de page -->
                     <tr>
                         <td style="padding: 20px; text-align: center; background-color: #C38B02; color: #ffffff;">
