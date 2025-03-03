@@ -57,9 +57,7 @@
                     <tr>
                         <td style="padding: 20px; text-align: center; background-color: #f9f9f9; color: #555555;">
                             <p style="font-family: Arial, sans-serif; font-size: 12px; margin: 0;">
-                                Vous recevez cet email car vous avez souscrit à notre newsletter. Si vous souhaitez vous
-                                désabonner, cliquez <a href="#"
-                                    style="color: #C38B02; text-decoration: underline;">ici</a>.
+                                Vous recevez cet email car vous avez souscrit à notre newsletter.
                             </p>
                             <p style="font-family: Arial, sans-serif; font-size: 12px; margin: 10px 0 0;">
                                 &copy; {{ date('Y') }} - {{ config('app.name') }}

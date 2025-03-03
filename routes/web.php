@@ -7,12 +7,12 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
-// For tests
-use App\Models\Post;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ConfirmSubscription;
-use App\Models\Folower;
-use App\Mail\NewPost;
+// // For tests
+// use App\Models\Post;
+// use Illuminate\Support\Facades\Mail;
+// use App\Mail\ConfirmSubscription;
+// use App\Models\Folower;
+// use App\Mail\NewPost;
 
 Route::name('blog.')->group(function () {
     Route::get('/', [BlogController::class, 'home'])->name('home');
@@ -25,7 +25,7 @@ Route::name('blog.')->group(function () {
     Route::post('/subscribe', [BlogController::class, 'newsletter'])->name('newsletter');
     Route::get('/confirm-subscription', [BlogController::class, 'confirm'])->name('confirm');
     Route::get('/unsubscribe', [BlogController::class, 'unsubscribe'])->name('unsubscribe');
-    Route::get('/foo', function () {
+    /*Route::get('/foo', function () {
         $folower = new Folower();
         $folower->email = 'mytaf360@gmail.com';
         $folower->id = 88;
@@ -34,7 +34,7 @@ Route::name('blog.')->group(function () {
         $unsubscribeUrl = route('blog.unsubscribe', [$folower->email, $folower->id]);
         Mail::to($folower->email)->send(new NewPost($post, $unsubscribeUrl));
         return 'done';
-    });
+    });*/
 
 
     Route::get('/post/{slug}-{post}', [BlogController::class, 'show'])
