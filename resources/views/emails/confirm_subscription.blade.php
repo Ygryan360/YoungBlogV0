@@ -28,14 +28,16 @@
 
         .email {
             display: flex;
+            text-align: center;
+            align-items: center;
             justify-content: center;
             padding: 30px;
-            text-align: center;
             background-color: #1a191e;
         }
 
         .email-container {
             max-width: 600px;
+            background-color: #1d1c21;
         }
 
         .content {
@@ -58,7 +60,6 @@
         }
 
         .footer {
-            background-color: #1d1c21;
             padding: 30px 10px;
         }
 

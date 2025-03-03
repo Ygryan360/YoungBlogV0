@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-6">
-                <a href="index.html">
+                <a href="{{ route('blog.home') }}">
                     <img src="{{ asset('img/logo.png') }}" alt="">
                 </a>
             </div>

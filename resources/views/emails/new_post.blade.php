@@ -15,22 +15,28 @@
 
         .email {
             display: flex;
+            text-align: center;
+            align-items: center;
             justify-content: center;
             padding: 30px;
             background-color: #1a191e;
         }
 
+        .email-container {
+            background-color: #1d1c21;
+        }
+
         h1,
         h3 {
             font-family: "Barlow", sans-serif;
-            color: #fff;
+            color: #ffffff;
             margin-bottom: 20px;
         }
 
         p,
         small {
             font-family: "Montserrat", sans-serif;
-            color: #ddd;
+            color: #dddddd;
             margin: 10px 0;
         }
 
@@ -48,6 +54,7 @@
 
         .content {
             padding: 20px 0;
+            color: #dddddd;
         }
 
         .btn-container {
@@ -56,7 +63,7 @@
 
         .btn {
             text-decoration: none;
-            color: #fff;
+            color: #ffffff;
             background-color: #C38B02;
             padding: 10px 15px;
             line-height: 1.5;
@@ -66,7 +73,6 @@
         }
 
         .footer {
-            background-color: #1d1c21;
             padding: 30px 10px;
             text-align: center;
             margin-top: 20px;
@@ -84,7 +90,7 @@
     <div class="email">
         <div class="email-container">
             <div class="header">
-                <h3 style="text-align: center;">{{ config('app.name') }}</h3>
+                <h1 style="text-align: center;">{{ config('app.name') }}</h1>
                 <p>Bonjour, Un nouvel article a été publié sur notre blog. Voici un aperçu :</p>
                 <h1>{{ Str::limit($post->title, 50) }}</h1>
             </div>
@@ -104,7 +110,6 @@
             </small>
             <div class="footer">
                 <p>
-                    Merci,<br>
                     &copy; {{ date('Y') }} - {{ config('app.name') }}
                 </p>
             </div>
