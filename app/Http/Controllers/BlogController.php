@@ -16,8 +16,6 @@ class BlogController extends Controller
 {
     public function home()
     {
-        // $folower = Folower::create(['email' => 'rayanetchabodi360@gmail.com']);
-        // Mail::to($folower->email)->send(new ConfirmSubscription($folower));
         return view('blog.home', [
             'posts' => Post::select(['title', 'content', 'slug', 'cover', 'created_at', 'id', 'category_id'])
                 ->where('created_at', '>=', now()->subWeeks(2))
