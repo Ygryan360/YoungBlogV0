@@ -21,8 +21,12 @@
                                 <label for="name" class="text-black-300">Votre nom</label>
                                 <input type="text" id="name" name="name"
                                     class="form-control bg-transparent rounded-0 border-bottom shadow-none pb-15 px-0"
-                                    placeholder="John Doe" required>
-                                <p class="invalid-feedback">Votre nom est obligatoire</p>
+                                    value="{{ old('name') }}" placeholder="John Doe" required>
+                                @error('name')
+                                    <div class="text-sm text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -30,16 +34,24 @@
                                 <label for="email" class="text-black-300">Addresse E-Mail</label>
                                 <input type="email" id="email" name="email"
                                     class="form-control bg-transparent rounded-0 border-bottom shadow-none pb-15 px-0"
-                                    placeholder="john.doe@exemple.com" required>
-                                <p class="invalid-feedback">E-mail obligatoire!</p>
+                                    value="{{ old('email') }}" placeholder="john.doe@exemple.com" required>
+                                @error('email')
+                                    <div class="text-sm text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-5">
                                 <label for="message" class="text-black-300">Votre message</label>
                                 <textarea name="message" class="form-control bg-transparent rounded-0 border-bottom shadow-none pb-15 px-0"
-                                    placeholder="Bonjour, je..." required></textarea>
-                                <p class="invalid-feedback">Message obligatoire!</p>
+                                    placeholder="Bonjour, je..." required>{{ old('message') }}</textarea>
+                                @error('message')
+                                    <div class="text-sm text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">

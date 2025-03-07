@@ -67,8 +67,7 @@
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
                                 </form>
-                                @if ($post->status === 'published')
-                                @else
+                                @if ($post->status != 'published')
                                     <form action="{{ route('posts.changestatus', $post->id) }}" method="post"
                                         class="d-inline">
                                         @csrf
@@ -84,6 +83,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $posts->links() }}
     </div>
 @endsection
 

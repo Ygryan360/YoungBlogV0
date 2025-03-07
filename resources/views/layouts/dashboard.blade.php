@@ -22,23 +22,44 @@
 </head>
 
 <body>
-    <header class="d-flex justify-content-between p-3">
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="{{ route('dashboard') }}"
-                    class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">Tableau de bord</a></li>
-            <li class="nav-item"><a href="{{ route('posts.index') }}"
-                    class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">Articles</a></li>
-            <li class="nav-item"><a href="{{ route('categories.index') }}"
-                    class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">Catégories</a></li>
-            <li class="nav-item"><a href="{{ route('tags.index') }}"
-                    class="nav-link {{ request()->routeIs('tags.*') ? 'active' : '' }}">Tags</a></li>
-        </ul>
-        <form action="{{ route('logout') }}" method="post">
-            @csrf
-            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-right"></i></button>
-        </form>
-    </header>
-    <main class="container py-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('dashboard') }}">DashBoard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="{{ route('posts.index') }}"
+                            class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('categories.index') }}"
+                            class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">Catégories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('tags.index') }}"
+                            class="nav-link {{ request()->routeIs('tags.*') ? 'active' : '' }}">Tags</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('messages.index') }}"
+                            class="nav-link {{ request()->routeIs('messages.*') ? 'active' : '' }}">Messages</a>
+                    </li>
+                </ul>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="nav-link text-light">
+                        <i class="bi bi-box-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
         @if (session('success'))
             <div class="alert alert-success text-center">
                 {{ session('success') }}

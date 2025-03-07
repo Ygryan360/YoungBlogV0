@@ -62,7 +62,7 @@ class BlogController extends Controller
     public function tag(string $name)
     {
         $tag = Tag::where('name', $name)->firstOrFail();
-        return view('blog.tag', ['posts' => $tag->posts(10), 'tag' => $tag]);
+        return view('blog.tag', ['posts' => $tag->posts()->paginate(50), 'tag' => $tag]);
     }
 
     public function search(Request $request)

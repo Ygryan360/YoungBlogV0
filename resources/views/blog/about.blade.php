@@ -7,9 +7,10 @@
 @section('content')
     <div class="row">
         <div class="col-md-9">
-            <img class="img-fluid" src="{{ asset('img/cover.png') }}" alt="Rayane Tchabodi">
-            <h1 class="text-white add-letter-space my-4">Salut, je suis Rayane Tchabodi, Bloggeur et passionné de tech</h1>
-            <p>
+            <img class="img-fluid" src="{{ asset('img/author.png') }}" alt="Rayane Tchabodi">
+            <h1 class="text-white add-letter-space my-4">Salut, je suis Rayane Tchabodi, Developpeur, Bloggeur et passionné
+                de tech.</h1>
+            {{-- <p>
                 Je suis étudiant en première année en Sciences Economique et de gestion (FaSEG) à <a target="_blank"
                     href="https://univ-lome.tg/">L'université de Lomé</a>.
                 Je me plonge avec enthousiasme dans les défis complexes du monde numérique. Mon parcours professionnel m'a
@@ -63,17 +64,7 @@
                     </ul>
                     </p>
                 </li>
-                {{-- <li class="bullet-list-item">
-                    <h3 class="text-white mb-3 add-letter-space">Des conseils ?</h3>
-                    <ol class="pl-0">
-                        <li class="mb-2">Sll the Themefisher items are designed to be with the latest , We check all.</li>
-                        <li class="mb-2">Comments that threaten or harm the reputation of any person or organization</li>
-                        <li class="mb-2">Personal information including, but limited to, email addresses, telephone
-                            numbers</li>
-                        <li>Any Update come in The technology Customer will get automatic Notification.</li>
-                    </ol>
-                </li> --}}
-            </ul>
+            </ul> --}}
         </div>
     </div>
 @endsection
