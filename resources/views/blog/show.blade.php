@@ -21,8 +21,19 @@
                     </a>
                 </li>
             </ul>
-            <div class="mt-4">
+            <div class="mt-3 mb-5">
                 {!! $post->content !!}
+            </div>
+            <div class="l-0 mt-4 mb-4">
+                <div class="categores-links text-capitalize">
+                    <h3 class="text-white add-letter-space mb-2">
+                        <span class="fas fa-tags text-primary"></span>
+                        Libellés :
+                    </h3>
+                    @foreach ($post->tags as $tag)
+                        <a class="border" href="{{ route('blog.tag', $tag->name) }}">{{ $tag->name }}</a>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

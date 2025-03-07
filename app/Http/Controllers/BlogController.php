@@ -10,7 +10,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Mail\ConfirmSubscription;
-// use App\Models\
+use App\Models\Tag;
 
 class BlogController extends Controller
 {
@@ -48,7 +48,7 @@ class BlogController extends Controller
 
     public function category(string $name)
     {
-        $category = Category::where('name', $name)->first();
+        $category = Category::where('name', $name)->firstOrFail();
         return view('blog.category', [
             'category' => $category,
             'posts' => Post::where('category_id', $category->id)
@@ -59,9 +59,10 @@ class BlogController extends Controller
         ]);
     }
 
-    public function tag($name)
+    public function tag(string $name)
     {
-        return view('blog.tag');
+        $tag = Tag::where('name', $name)->firstOrFail();
+        return view('blog.tag', ['posts' => $tag->posts(10), 'tag' => $tag]);
     }
 
     public function search(Request $request)

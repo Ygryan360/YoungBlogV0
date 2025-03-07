@@ -11,9 +11,9 @@ class Tag extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function posts()
+    public function posts(int $limit = 10)
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class)->paginate($limit);
     }
 
 }
