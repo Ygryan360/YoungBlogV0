@@ -3,7 +3,7 @@
 <div {{ $attributes->merge(['class' => 'card post-item bg-transparent border-0 mb-5']) }}>
     <a href="{{ route('blog.show', [$post->slug, $post->id]) }}">
         <img class="card-img-top rounded-0"
-            src="https://cdn.pixabay.com/photo/2024/10/16/16/14/cat-9125207_960_720.jpg{{-- $post->cover ?? asset('img/cover.png') --}}"
+            src="{{$post->cover ?? asset('img/cover.png')}}"
             alt="{{ $post->title }}">
     </a>
     <div class="card-body px-0">
