@@ -41,12 +41,12 @@ Route::name('blog.')->group(function () {
         ->where(['slug' => '[a-z0-9-]+', 'post' => '[0-9]+'])
         ->name('show');
 
-    Route::get('/category/{name}', action: [BlogController::class, 'category'])
-        ->where('name', '[a-z0-9]+')
+    Route::get('/categorie/{slug}', action: [BlogController::class, 'category'])
+        ->where('slug', '[a-z0-9-]+')
         ->name('category');
 
-    Route::get('/tag/{name}', [BlogController::class, 'tag'])
-        ->where('name', '[a-z0-9]+')
+    Route::get('/tag/{slug}', [BlogController::class, 'tag'])
+        ->where('slug', '[a-z0-9-]+')
         ->name('tag');
 });
 

@@ -1,5 +1,5 @@
 @extends('layouts.blog')
-@section('url', route('blog.tag', $tag->name))
+@section('url', route('blog.tag', $tag->slug))
 @section('title', 'Tag: ' . ucfirst($tag->name))
 @section('content')
     <div class="row">

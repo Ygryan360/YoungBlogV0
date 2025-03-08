@@ -31,7 +31,7 @@
                 </li>
                 <li class="d-inline-block">
                     <span class="fas fa-list-alt text-primary"></span>
-                    <a class="ml-1" href="{{ route('blog.category', $lastPost->category->name) }}">
+                    <a class="ml-1" href="{{ route('blog.category', $lastPost->category->slug) }}">
                         {{ ucfirst($lastPost->category->name) }}
                     </a>
                 </li>

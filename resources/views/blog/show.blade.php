@@ -16,7 +16,7 @@
                 </li>
                 <li class="d-inline-block">
                     <span class="fas fa-list-alt text-primary"></span>
-                    <a class="ml-1" href="{{ route('blog.category', $post->category->name) }}">
+                    <a class="ml-1" href="{{ route('blog.category', $post->category->slug) }}">
                         {{ ucfirst($post->category->name) }}
                     </a>
                 </li>
@@ -31,7 +31,7 @@
                         Libellés :
                     </h3>
                     @foreach ($post->tags as $tag)
-                        <a class="border" href="{{ route('blog.tag', $tag->name) }}">{{ $tag->name }}</a>
+                        <a class="border" href="{{ route('blog.tag', $tag->slug) }}">{{ $tag->name }}</a>
                     @endforeach
                 </div>
             </div>

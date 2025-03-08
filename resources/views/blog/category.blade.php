@@ -1,6 +1,6 @@
 @extends('layouts.blog')
 @section('og-description', $category->description)
-@section('url', route('blog.category', $category->name))
+@section('url', route('blog.category', $category->slug))
 @section('title', 'Categorie: ' . ucfirst($category->name))
 @section('content')
     <div class="row">
@@ -23,7 +23,7 @@
                             <h3 class="text-white add-letter-space mb-3">Voir plus de categories :</h3>
                             @foreach ($moreCategories as $moreCategory)
                                 <a class="border"
-                                    href="{{ route('blog.category', $moreCategory->name) }}">{{ $moreCategory->name }}</a>
+                                    href="{{ route('blog.category', $moreCategory->slug) }}">{{ $moreCategory->name }}</a>
                             @endforeach
                         </div>
                     </div>

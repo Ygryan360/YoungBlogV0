@@ -27,8 +27,10 @@ class TagController extends Controller
         $request->validate([
             'name' => ['required', 'unique:tags', 'min:2', 'max:16'],
         ]);
+        $tag = $request->all();
+        $tag['slug'] = \Str::slug($tag['name']);
 
-        Tag::create($request->all());
+        Tag::create($tag);
 
         return redirect()->route('tags.index')->with('success', 'Tag créé avec succès.');
     }
@@ -38,8 +40,10 @@ class TagController extends Controller
         $request->validate([
             'name' => ['required', 'unique:tags,name,' . $tag->id, 'min:2', 'max:16'],
         ]);
+        $data['name'] = $request->name;
+        $data['slug'] = \Str::slug($request->name);
 
-        $tag->update($request->only('name'));
+        $tag->update($data);
 
         return redirect()->route('tags.index')->with('success', 'Tag mis à jour avec succès.');
     }
@@ -50,6 +54,7 @@ class TagController extends Controller
             return back()->with('error', 'Suppression impossible! Ce tag est associé à des articles.');
         }
         $tag->delete();
+
         return redirect()->route('tags.index')->with('success', 'Tag supprimé avec succès.');
     }
 }

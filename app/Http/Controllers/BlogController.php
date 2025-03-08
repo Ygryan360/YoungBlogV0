@@ -46,9 +46,9 @@ class BlogController extends Controller
         return view('blog.show', compact('post'));
     }
 
-    public function category(string $name)
+    public function category(string $slug)
     {
-        $category = Category::where('name', $name)->firstOrFail();
+        $category = Category::where('slug', $slug)->firstOrFail();
         return view('blog.category', [
             'category' => $category,
             'posts' => Post::where('category_id', $category->id)
@@ -59,9 +59,9 @@ class BlogController extends Controller
         ]);
     }
 
-    public function tag(string $name)
+    public function tag(string $slug)
     {
-        $tag = Tag::where('name', $name)->firstOrFail();
+        $tag = Tag::where('slug', $slug)->firstOrFail();
         return view('blog.tag', ['posts' => $tag->posts()->paginate(50), 'tag' => $tag]);
     }
 

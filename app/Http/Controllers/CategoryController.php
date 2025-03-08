@@ -28,8 +28,9 @@ class CategoryController extends Controller
             'name' => ['required', 'unique:categories', 'min:2', 'max:32'],
             'description' => ['required', 'min:16', 'max:160'],
         ]);
-
-        Category::create($request->all());
+        $category = $request->all();
+        $category['slug'] = \Str::slug($category['name']);
+        Category::create($category);
 
         return redirect()->route('categories.index')->with('success', 'Categorie créée avec succès.');
     }
@@ -40,8 +41,9 @@ class CategoryController extends Controller
             'name' => ['required', 'unique:categories,name,' . $category->id, 'min:2', 'max:32'],
             'description' => ['required', 'min:16', 'max:160'],
         ]);
-
-        $category->update($request->all());
+        $datas = $request->all();
+        $datas['slug'] = \Str::slug($request->name);
+        $category->update($datas);
 
         return redirect()->route('categories.index')->with('success', 'Categorie mise à jour avec succès.');
     }

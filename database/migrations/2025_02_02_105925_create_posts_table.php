@@ -18,6 +18,8 @@ return new class extends Migration {
             $table->longText('content');
             $table->string('slug')->unique();
             $table->string('status')->default('draft');
+            $table->string('cover')->nullable();
+            $table->integer('views')->default(0);
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

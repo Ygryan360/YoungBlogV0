@@ -2,9 +2,7 @@
 
 <div {{ $attributes->merge(['class' => 'card post-item bg-transparent border-0 mb-5']) }}>
     <a href="{{ route('blog.show', [$post->slug, $post->id]) }}">
-        <img class="card-img-top rounded-0"
-            src="{{$post->cover ?? asset('img/cover.png')}}"
-            alt="{{ $post->title }}">
+        <img class="card-img-top rounded-0" src="{{ $post->cover ?? asset('img/cover.png') }}" alt="{{ $post->title }}">
     </a>
     <div class="card-body px-0">
         <h2 class="card-title">
@@ -21,7 +19,7 @@
             </li>
             <li class="d-inline-block">
                 <span class="fas fa-list-alt text-primary"></span>
-                <a class="ml-1" href="{{ route('blog.category', $post->category->name) }}">
+                <a class="ml-1" href="{{ route('blog.category', $post->category->slug) }}">
                     {{ ucfirst($post->category->name) }}
                 </a>
             </li>
