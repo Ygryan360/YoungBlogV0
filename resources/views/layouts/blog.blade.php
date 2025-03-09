@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <title>@yield('title') - YoungBlog</title>
+    <title>@yield('title') - {{ env('APP_NAME') }}</title>
     <meta name="author" content="Rayane Tchabodi">
     <meta property="og:description" content="@yield('og-description')">
     <meta property="og:locale" content="fr_FR" />

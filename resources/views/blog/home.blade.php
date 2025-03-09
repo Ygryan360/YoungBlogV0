@@ -24,7 +24,6 @@
             <div class="widget">
                 <x-widget-last-posts />
             </div>
-            <!-- end of post-items widget -->
         </div>
     </div>
 @endsection

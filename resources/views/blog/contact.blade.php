@@ -13,7 +13,7 @@
                     Vous avez une question ? Un truc à partager ? Envoyez moi un message et je vous répondrai dans les plus
                     brefs délais.
                 </p>
-                <form method="POST" class="needs-validation" action="{{ route('blog.contact') }}">
+                <form method="POST" action="{{ route('blog.contact') }}">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

@@ -732,27 +732,32 @@ li {
 }
 
 /*------------------------------------------------------------------
- # contact-form style
+ # contact-form & comment-form style
 -------------------------------------------------------------------*/
-.contact-form {
+.contact-form,
+.comment-form {
     padding: 60px;
 }
-.contact-form label {
+.contact-form label,
+.comment-form label {
     font-size: 14px;
     color: #ffffff;
     margin-bottom: 15px;
 }
-.contact-form .form-control {
+.contact-form .form-control,
+.comment-form .form-control {
     background-color: transparent;
     border: 0;
     color: #aaa;
     border-color: #333139 !important;
     padding-bottom: 20px;
 }
-.contact-form .form-control:focus {
+.contact-form .form-control:focus,
+.comment-form .form-control:focus {
     border-color: #888888 !important;
 }
-.contact-form select {
+.contact-form select,
+.comment-form select {
     padding-bottom: 16px;
     color: #aaa;
     padding-right: 15px;
@@ -760,11 +765,13 @@ li {
     border: 0;
     border-bottom: 1px solid #333139;
 }
-.contact-form select option {
+.contact-form select option,
+.comment-form select option {
     background-color: #1d1c21;
     color: #ffffff;
 }
-.contact-form textarea {
+.contact-form textarea,
+.comment-form textarea {
     resize: none;
     height: 100px;
 }

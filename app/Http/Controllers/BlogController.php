@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use Parsedown;
+use App\Models\Tag;
+use App\Models\Post;
 use App\Models\Folower;
 use App\Models\Message;
-use Illuminate\Support\Facades\Mail;
-use Parsedown;
-use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Mail\ConfirmSubscription;
-use App\Models\Tag;
+use Illuminate\Support\Facades\Mail;
 
 class BlogController extends Controller
 {
@@ -44,6 +45,23 @@ class BlogController extends Controller
         $parsedown->setMarkupEscaped(true);
         $post->content = $parsedown->text($post->content);
         return view('blog.show', compact('post'));
+    }
+    public function comment(Post $post, Request $request)
+    {
+        $request->validate([
+            'content' => ['required', 'string', 'min:2', 'max:1000'],
+            'email' => ['required', 'email'],
+            'name' => ['required', 'string', 'min:2'],
+        ]);
+
+        Comment::create([
+            'content' => $request->content,
+            'post_id' => $post->id,
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        return back()->with('comment-success');
     }
 
     public function category(string $slug)
