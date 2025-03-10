@@ -2,33 +2,31 @@
 
 namespace App\Mail;
 
+use App\Models\Message;
 use Illuminate\Mail\Mailable;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NewPost extends Mailable
+class NewMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $post;
-    public $unsubscribeUrl;
+    public $message;
 
     /**
      * Create a new message instance.
      */
-
-    public function __construct($post, $unsubscribeUrl)
+    public function __construct(Message $message)
     {
-        $this->post = $post;
-        $this->unsubscribeUrl = $unsubscribeUrl;
+        $this->message = $message;
     }
 
     public function build()
     {
-        return $this->view('emails.new_post')->with(['post' => $this->post, 'unsubscribeUrl' => $this->unsubscribeUrl]);
+        return $this->view('emails.new_message')->with(['id' => $this->message->id, 'name' => $this->message->name]);
     }
 
     /**
@@ -37,7 +35,7 @@ class NewPost extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nouvel article publié : ' . \Str::limit($this->post->title),
+            subject: 'Nouveau Message',
         );
     }
 
@@ -47,7 +45,7 @@ class NewPost extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.new_post',
+            view: 'emails.new_message',
         );
     }
 

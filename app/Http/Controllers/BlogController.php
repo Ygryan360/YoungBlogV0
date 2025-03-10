@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewMessage;
 use App\Models\Comment;
 use Parsedown;
 use App\Models\Tag;
@@ -46,6 +47,7 @@ class BlogController extends Controller
         $post->content = $parsedown->text($post->content);
         return view('blog.show', compact('post'));
     }
+
     public function comment(Post $post, Request $request)
     {
         $request->validate([
@@ -109,34 +111,29 @@ class BlogController extends Controller
     public function storeContact(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'message' => 'required|string|min:32',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'message' => ['required', 'string', 'min:32'],
         ]);
-        Message::create([
+        $message = Message::create([
             'name' => $request->name,
             'email' => $request->email,
             'content' => $request->message,
         ]);
+        Mail::to('rayanetchabodi360@gmail.com')->send(new NewMessage($message));
+
         return redirect()->route('blog.contact')->with('success', 'Votre message a bien été envoyé !');
     }
 
     public function newsletter(Request $request)
     {
-        $request->validate(
-            [
-                'email' => ['email', 'required', 'unique:folowers'],
-            ],
-            [
-                'email.unique' => 'Vous êtes déjà inscrit à la newsletter !',
-                'email.required' => 'Veuillez entrer une adresse email valide !',
-                'email.email' => 'Veuillez entrer une adresse email valide !',
-            ]
-        );
+        $request->validate(['email' => ['email', 'required', 'unique:folowers']]);
         $folower = Folower::create(['email' => $request->email]);
         Mail::to($folower->email)->send(new ConfirmSubscription($folower));
+
         return redirect()->back()->with('success', 'Un email de confirmation vous a été envoyé ! Veuillez vérifier votre boîte de réception.');
     }
+
     public function confirm(Request $request)
     {
         $folower = Folower::where('email', $request->email)->where('id', $request->id)->firstOrFail();
