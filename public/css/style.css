@@ -796,3 +796,7 @@ footer ul li:last-child a {
     margin-bottom: 0;
 }
 /*# sourceMappingURL=style.css.map */
+
+.comment-item {
+    border-color: #333139 !important;
+}

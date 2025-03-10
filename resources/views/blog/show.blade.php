@@ -38,7 +38,7 @@
             <div class="mb-5">
                 <h3 class="text-white add-letter-space mb-2">
                     <span class="fas fa-comment text-primary"></span>
-                    Commentaires :
+                    {{ $post->comments_count() }} Commentaire{{ $post->comments_count() > 1 ? 's' : '' }} :
                 </h3>
                 <div class="my-3 comment-form">
                     <form method="POST" action="{{ route('blog.comment', $post->id) }}">
@@ -86,24 +86,31 @@
                                 <small>Attention: Une fois le commentaire envoyé, il est impossible de le supprimer ou
                                     de le modifier. Faites attentin à ce que vous postez !
                                 </small> <br />
-                                <button type="submit" class="btn btn-sm btn-primary mt-2">
+                                <button type="submit" class="btn btn-sm btn-primary my-2">
                                     Poster <i class="fas fa-paper-plane"></i>
                                 </button>
+                                @if (session('comment-success'))
+                                    <div class="text-success">
+                                        Votre commentaire à bien été posté.
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="comments">
-                <h4 class="text-white add-letter-space mb-2">
-                    <span class="fas fa-comments text-primary"></span>
-                    Commentaires :
-                </h4>
                 <div class="comments-container">
                     @foreach ($post->comments as $comment)
-                        <div class="comment-item">
-                            <h5 class="add-letter-space mb-1">{{ $comment->name }}</h5>
-                            <p>
+                        <div class="comment-item border-bottom mb-5">
+                            <h3 class="add-letter-space mb-2">
+                                <span class="fas fa-user text-primary"></span>
+                                {{ \Str::ucfirst($comment->name) }}
+                            </h3>
+                            <h6 class="mb-2">
+                                {{ \Carbon\Carbon::parse($comment->created_at)->format('d M Y - H:i:s') }}
+                            </h6>
+                            <p class="py-1">
                                 {{ $comment->content }}
                             </p>
                         </div>
