@@ -1,11 +1,11 @@
 @extends('layouts.blog')
-@section('og-description', 'Découvrez tous les articles de notre blog.')
+@section('og-description', 'Découvrez tous les articles de mon blog.')
 @section('url', route('blog.posts'))
 @section('title', 'Articles')
 @section('content')
     <div class="row justify-content-between">
         <div class="col-lg-7">
-            <h1 class="text-white add-letter-space mb-5">Tous nos articles &rarr;</h1>
+            <h1 class="text-white add-letter-space mb-5">Tous mes articles &rarr;</h1>
             @foreach ($posts as $post)
                 <x-post-item-card :post="$post" />
             @endforeach

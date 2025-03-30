@@ -1,6 +1,6 @@
 <h2 class="widget-title text-white d-inline-block mt-4">S'abonner</h2>
 <p class="mt-4">
-    Abonnez-vous à notre Newsletter pour rester au courant de nos nouveaux
+    Abonnez-vous à ma Newsletter pour rester au courant de mes nouveaux
     posts et informations !
 </p>
 <form action="{{ route('blog.newsletter') }}" method="POST">

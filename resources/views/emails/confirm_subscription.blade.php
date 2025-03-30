@@ -31,8 +31,8 @@
                                 Bonjour {{ $email }},</h2>
                             <p
                                 style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6;">
-                                Merci de vous être abonné à notre newsletter ! Nous sommes ravis de vous compter parmi
-                                nos lecteurs fidèles.
+                                Merci de vous être abonné à ma newsletter ! Je suis ravis de vous compter parmi
+                                mes lecteurs fidèles.
                             </p>
                             <p
                                 style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6;">
@@ -48,7 +48,7 @@
                             <p
                                 style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6; margin-top: 20px;">
                                 Si vous n'avez pas demandé cet abonnement, vous pouvez ignorer cet email. Aucune action
-                                ne sera entreprise de notre part.
+                                ne sera entreprise de ma part.
                             </p>
                         </td>
                     </tr>
@@ -57,7 +57,7 @@
                     <tr>
                         <td style="padding: 20px; text-align: center; background-color: #f9f9f9; color: #555555;">
                             <p style="font-family: Arial, sans-serif; font-size: 12px; margin: 0;">
-                                Vous recevez cet email car vous avez souscrit à notre newsletter.
+                                Vous recevez cet email car vous avez souscrit à ma newsletter.
                             </p>
                             <p style="font-family: Arial, sans-serif; font-size: 12px; margin: 10px 0 0;">
                                 &copy; {{ date('Y') }} - {{ config('app.name') }}

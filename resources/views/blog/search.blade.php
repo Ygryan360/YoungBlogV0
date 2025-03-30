@@ -2,7 +2,7 @@
     $categories = App\Models\Category::take(5)->get();
 @endphp
 @extends('layouts.blog')
-@section('og-description', 'Trouvez des articles de notre blog.')
+@section('og-description', 'Trouvez des articles de mon blog.')
 @section('url', route('blog.posts'))
 @section('title', 'Rechercher')
 @section('content')

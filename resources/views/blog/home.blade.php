@@ -1,5 +1,5 @@
 @extends('layouts.blog')
-@section('og-description', 'Découvrez les derniers articles de notre blog et restez informé des dernières actualités.')
+@section('og-description', 'Découvrez les derniers articles de mon blog et restez informé des dernières actualités.')
 @section('url', route('blog.home'))
 @section('title', 'Accueil')
 @section('content')

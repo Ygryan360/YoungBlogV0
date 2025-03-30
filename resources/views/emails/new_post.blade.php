@@ -37,8 +37,8 @@
                                 Bonjour,</h2>
                             <p
                                 style="font-family: Arial, sans-serif; font-size: 14px; color: #555555; line-height: 1.6;">
-                                Nous espérons que vous allez bien ! Aujourd'hui, nous avons le plaisir de partager avec
-                                vous un nouvel article passionnant sur notre blog.
+                                J'èspère que vous allez bien ! Aujourd'hui, j'ai le plaisir de partager avec
+                                vous un nouvel article passionnant sur mon blog.
                             </p>
                             <h3
                                 style="font-family: Arial, sans-serif; font-size: 18px; color: #333333; margin: 20px 0 10px;">
